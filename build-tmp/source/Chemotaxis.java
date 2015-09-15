@@ -14,35 +14,54 @@ import java.io.IOException;
 
 public class Chemotaxis extends PApplet {
 
-int bacteria;
+
+
+Bacteria [] colony;
+
  public void setup()   
  {     
- 	bacteria = 300;   
+   background(200);
+   size(300, 300);
+
+   colony = new Bacteria[20000];
+   for(int i = 0; i < colony.length; i++) 
+   {
+      colony[i]= new Bacteria();
+   }
+   
  }   
  public void draw()   
- {    
- 	
+ {   
+   background(200);
+   for(int j = 0; j < colony.length; j++)
+   {
+    colony[j].walk();
+    colony[j].show();
+   }
+   
  }  
  class Bacteria    
  {    
- 	int bacX, bacY;
- 	Bacteria()
- 	{
- 		bacX = 300;
- 		bacY = 300;
- 	}
- 	
- 	public void walk()
- 	{
- 		bacX += (int)(Math.random() * 3 - 1);
- 		bacY += (int)(Math.random() *3 - 1);
- 	}
+   int bacX, bacY, bacColor;
+   Bacteria()
+   {
+     bacX = 150;
+     bacY = 150;
+     bacColor = (int)(Math.random() * 255);
+   }
+   
+   public void walk()
+   {
+     bacX += (int)(Math.random() * 4 - 2);
+     bacY += (int)(Math.random() * 4 - 2);
+   }
 
- 	public void show()
- 	{
- 		fill(255, 0, 0);
- 		ellipse(bacX, bacY, 50, 50);
- 	}
+   public void show()
+   {
+     noStroke();
+     fill(0, bacColor, 0, 200);
+     ellipse(bacX, bacY, 1, 1);
+   }
  }    
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "Chemotaxis" };

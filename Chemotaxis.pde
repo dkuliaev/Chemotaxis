@@ -1,37 +1,49 @@
-int bacteria;
-Bacteria subject;
+
+
+Bacteria [] colony;
+
  void setup()   
  {     
    background(200);
-   size(600, 600);  
-   Bacteria subject = new Bacteria(300, 300);
+   size(300, 300);
+
+   colony = new Bacteria[20000];
+   for(int i = 0; i < colony.length; i++) 
+   {
+      colony[i]= new Bacteria();
+   }
+   
  }   
  void draw()   
  {   
    background(200);
+   for(int j = 0; j < colony.length; j++)
+   {
+    colony[j].walk();
+    colony[j].show();
+   }
    
-   subject.walk();
-   subject.show();
  }  
  class Bacteria    
  {    
-   int bacX, bacY;
-   Bacteria(int x, int y)
+   int bacX, bacY, bacColor;
+   Bacteria()
    {
-     bacX = x;
-     bacY = y;
+     bacX = 150;
+     bacY = 150;
+     bacColor = (int)(Math.random() * 255);
    }
    
    void walk()
    {
-     bacX += (int)(Math.random() * 3 - 1);
-     bacY += (int)(Math.random() *3 - 1);
+     bacX += (int)(Math.random() * 4 - 2);
+     bacY += (int)(Math.random() * 4 - 2);
    }
 
    void show()
    {
      noStroke();
-     fill(255, 0, 0);
-     ellipse(bacX, bacY, 50, 50);
+     fill(0, bacColor, 0, 200);
+     ellipse(bacX, bacY, 1, 1);
    }
  }    
