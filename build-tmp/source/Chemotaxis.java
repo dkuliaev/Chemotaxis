@@ -20,7 +20,7 @@ Bacteria [] colony;
 
  public void setup()   
  {     
-   background(200);
+  
    size(600, 600);
 
    colony = new Bacteria[200];
@@ -32,7 +32,7 @@ Bacteria [] colony;
  }   
  public void draw()   
  {   
-   background(200);
+   background(0, 64, 64);
    for(int j = 0; j < colony.length; j++)
    {
     colony[j].walk();
@@ -56,15 +56,15 @@ Bacteria [] colony;
     int bacYinc = (int)(Math.random() * 4 - 2);
 
     if(mouseX < bacX) {
-      bacXinc = (int)(Math.random() * 5 - 3);
+      bacXinc = (int)(Math.random() * 10 - 7);
     }
     else if(mouseX > bacX) {
-      bacXinc = (int)(Math.random() * 5 - 2);
+      bacXinc = (int)(Math.random() * 10 - 3);
     }
     if(mouseY < bacY) {
-      bacYinc = (int)(Math.random() * 5 - 3);
+      bacYinc = (int)(Math.random() * 10 - 7);
     } else if(mouseY > bacY) {
-      bacYinc = (int)(Math.random() * 5 - 2);
+      bacYinc = (int)(Math.random() * 10 - 3);
     }
 
 
@@ -80,8 +80,10 @@ Bacteria [] colony;
      fill(0, bacColor, 0, 200);
      ellipse(bacX, bacY, 10, 10);
      fill(200, 0, 0);
-     ellipse(mouseX, mouseY, 20, 20);
-   }
+     ellipse(mouseX, mouseY, 10, 10);
+     
+
+    }
  }    
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "Chemotaxis" };
